@@ -109,6 +109,45 @@ class AnthropicProvider(BaseLLMProvider):
             raise LLMTimeoutError(provider="anthropic")
 
 
+class OpenRouterProvider(BaseLLMProvider):
+    """OpenRouter provider using OpenAI-compatible interface."""
+
+    def __init__(self):
+        if not settings.openrouter_api_key:
+            raise ProviderNotConfiguredError("openrouter")
+        try:
+            from openai import AsyncOpenAI
+            self.client = AsyncOpenAI(
+                api_key=settings.openrouter_api_key,
+                base_url="https://openrouter.ai/api/v1",
+            )
+            self.model = settings.openrouter_model
+        except ImportError:
+            raise RuntimeError("openai package not installed. Run: pip install openai")
+
+    async def complete(self, system_prompt: str, user_prompt: str) -> str:
+        try:
+            extra_headers = {
+                "HTTP-Referer": "https://github.com/S1git1G/system-design-visualizer",
+                "X-Title": "System Design Visualizer",
+            }
+            response = await asyncio.wait_for(
+                self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                    temperature=0.7,
+                    extra_headers=extra_headers,
+                ),
+                timeout=120.0,
+            )
+            return response.choices[0].message.content
+        except asyncio.TimeoutError:
+            raise LLMTimeoutError(provider="openrouter")
+
+
 class LLMServiceFactory:
     """Factory that returns the correct provider based on settings."""
 
@@ -119,8 +158,10 @@ class LLMServiceFactory:
             return OpenAIProvider()
         elif provider == "anthropic":
             return AnthropicProvider()
+        elif provider == "openrouter":
+            return OpenRouterProvider()
         else:
-            raise ValueError(f"Unknown LLM provider: '{provider}'. Use 'openai' or 'anthropic'.")
+            raise ValueError(f"Unknown LLM provider: '{provider}'. Use 'openai', 'anthropic', or 'openrouter'.")
 
 
 # Singleton-style cached provider (re-created if settings change)

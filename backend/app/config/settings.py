@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     )
 
     # LLM Provider
-    active_llm_provider: str = "openai"  # "openai" | "anthropic"
+    active_llm_provider: str = "openai"  # "openai" | "anthropic" | "openrouter"
 
     # OpenAI
     openai_api_key: str = ""
@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     # Anthropic
     anthropic_api_key: str = ""
     anthropic_model: str = "claude-3-5-sonnet-20241022"
+
+    # OpenRouter
+    openrouter_api_key: str = ""
+    openrouter_model: str = "meta-llama/llama-3.1-8b-instruct:free"
 
     # Backend
     backend_host: str = "0.0.0.0"

@@ -7,9 +7,9 @@ export default function Navbar() {
         position: "sticky",
         top: 0,
         zIndex: 100,
-        background: "rgba(6, 11, 24, 0.85)",
-        backdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        background: "rgba(5, 5, 6, 0.3)",
+        backdropFilter: "blur(24px)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.04)",
         padding: "0 2rem",
         height: "64px",
         display: "flex",
@@ -24,24 +24,46 @@ export default function Navbar() {
       >
         <div
           style={{
-            width: 36,
-            height: 36,
-            borderRadius: "10px",
-            background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+            width: 32,
+            height: 32,
+            borderRadius: "4px",
+            background: "#ffffff",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "18px",
-            boxShadow: "0 0 20px rgba(99,102,241,0.3)",
+            fontSize: "14px",
+            color: "#050506",
+            fontWeight: 800,
+            fontFamily: "Space Grotesk, sans-serif",
+            boxShadow: "0 0 20px rgba(255, 255, 255, 0.15)",
           }}
         >
-          🏗️
+          SD
         </div>
         <div>
-          <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#f1f5f9" }}>
-            System Design
+          <div
+            style={{
+              fontWeight: 800,
+              fontSize: "0.9rem",
+              color: "#ffffff",
+              fontFamily: "Space Grotesk, sans-serif",
+              letterSpacing: "0.05em",
+              lineHeight: 1.1,
+            }}
+          >
+            SYSTEM DESIGN
           </div>
-          <div style={{ fontSize: "0.7rem", color: "#6366f1", fontWeight: 600, letterSpacing: "0.05em" }}>
+          <div
+            style={{
+              fontSize: "0.65rem",
+              color: "#a1a1aa",
+              fontWeight: 600,
+              letterSpacing: "0.15em",
+              fontFamily: "Space Grotesk, sans-serif",
+              lineHeight: 1.1,
+              marginTop: "2px",
+            }}
+          >
             VISUALIZER
           </div>
         </div>
@@ -59,7 +81,7 @@ export default function Navbar() {
           Practice
         </NavLink>
         <a
-          href="https://github.com/your-username/system-design-visualizer"
+          href="https://github.com/S1git1G/system-design-visualizer"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -67,26 +89,28 @@ export default function Navbar() {
             alignItems: "center",
             gap: "0.5rem",
             marginLeft: "0.5rem",
-            padding: "0.5rem 1rem",
-            background: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: "8px",
-            color: "#94a3b8",
+            padding: "0.4rem 1rem",
+            background: "rgba(255, 255, 255, 0.02)",
+            border: "1px solid rgba(255, 255, 255, 0.06)",
+            borderRadius: "4px",
+            color: "#ffffff",
             textDecoration: "none",
-            fontSize: "0.8rem",
-            fontWeight: 500,
-            transition: "all 0.2s ease",
+            fontSize: "0.75rem",
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.borderColor = "rgba(99,102,241,0.5)";
-            (e.currentTarget as HTMLElement).style.color = "#f1f5f9";
+            (e.currentTarget as HTMLElement).style.borderColor = "rgba(255, 255, 255, 0.2)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(255, 255, 255, 0.05)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
-            (e.currentTarget as HTMLElement).style.color = "#94a3b8";
+            (e.currentTarget as HTMLElement).style.borderColor = "rgba(255, 255, 255, 0.06)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(255, 255, 255, 0.02)";
           }}
         >
-          ⭐ Star on GitHub
+          ★ GitHub
         </a>
       </div>
     </nav>

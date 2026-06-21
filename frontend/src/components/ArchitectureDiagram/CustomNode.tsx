@@ -21,42 +21,43 @@ const CustomNode = memo(({ data, selected }: CustomNodeProps) => {
   return (
     <div
       style={{
-        background: config.bg,
-        border: `1px solid ${selected ? config.color : config.border}`,
-        borderRadius: "12px",
-        padding: "12px 16px",
-        minWidth: "140px",
-        maxWidth: "180px",
+        background: "rgba(9, 9, 11, 0.75)",
+        border: `1px solid ${selected ? "#ffffff" : "rgba(255,255,255,0.06)"}`,
+        borderRadius: "4px",
+        padding: "12px 14px",
+        minWidth: "150px",
+        maxWidth: "200px",
         cursor: "grab",
         boxShadow: selected
-          ? `0 0 20px ${config.color}40, 0 4px 16px rgba(0,0,0,0.4)`
-          : "0 4px 16px rgba(0,0,0,0.4)",
-        transition: "all 0.2s ease",
-        backdropFilter: "blur(8px)",
+          ? `0 0 20px rgba(255,255,255,0.1), 0 4px 16px rgba(0,0,0,0.8)`
+          : "0 4px 16px rgba(0,0,0,0.6)",
+        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        backdropFilter: "blur(16px)",
       }}
     >
       <Handle
         type="target"
         position={Position.Top}
         style={{
-          background: config.color,
-          border: "2px solid #0d1526",
-          width: 8,
-          height: 8,
+          background: "#ffffff",
+          border: "1px solid #050506",
+          width: 6,
+          height: 6,
         }}
       />
 
       <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
-        <span style={{ fontSize: "18px", lineHeight: 1 }}>{config.icon}</span>
+        <span style={{ fontSize: "16px", lineHeight: 1 }}>{config.icon}</span>
         <div>
           <div
             style={{
-              fontSize: "11px",
-              fontWeight: 600,
-              color: config.color,
+              fontSize: "8.5px",
+              fontWeight: 500,
+              color: "#71717a",
               textTransform: "uppercase",
-              letterSpacing: "0.05em",
+              letterSpacing: "0.12em",
               lineHeight: 1,
+              fontFamily: "JetBrains Mono, monospace",
             }}
           >
             {config.label}
@@ -65,9 +66,10 @@ const CustomNode = memo(({ data, selected }: CustomNodeProps) => {
             style={{
               fontSize: "12px",
               fontWeight: 600,
-              color: "#f1f5f9",
+              color: "#ffffff",
               lineHeight: 1.3,
-              marginTop: "3px",
+              marginTop: "4px",
+              fontFamily: "Space Grotesk, sans-serif",
             }}
           >
             {data.label}
@@ -79,14 +81,15 @@ const CustomNode = memo(({ data, selected }: CustomNodeProps) => {
         <div
           style={{
             fontSize: "10px",
-            color: "#64748b",
+            color: "#a1a1aa",
             lineHeight: 1.4,
-            marginTop: "4px",
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-            paddingTop: "4px",
+            marginTop: "6px",
+            borderTop: "1px solid rgba(255,255,255,0.04)",
+            paddingTop: "6px",
+            fontFamily: "Space Grotesk, sans-serif",
           }}
         >
-          {data.description.slice(0, 60)}{data.description.length > 60 ? "…" : ""}
+          {data.description.slice(0, 80)}{data.description.length > 80 ? "…" : ""}
         </div>
       )}
 
@@ -94,10 +97,10 @@ const CustomNode = memo(({ data, selected }: CustomNodeProps) => {
         type="source"
         position={Position.Bottom}
         style={{
-          background: config.color,
-          border: "2px solid #0d1526",
-          width: 8,
-          height: 8,
+          background: "#ffffff",
+          border: "1px solid #050506",
+          width: 6,
+          height: 6,
         }}
       />
     </div>

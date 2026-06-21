@@ -11,7 +11,7 @@ export default function AnalysisCard({
   title,
   icon,
   items,
-  accentColor = "#6366f1",
+  accentColor = "#ffffff",
   delay = 0,
 }: AnalysisCardProps) {
   return (
@@ -21,6 +21,9 @@ export default function AnalysisCard({
         padding: "1.25rem",
         animationDelay: `${delay}ms`,
         opacity: 0,
+        borderRadius: "4px",
+        background: "rgba(9, 9, 11, 0.4)",
+        border: "1px solid rgba(255, 255, 255, 0.05)",
       }}
     >
       {/* Header */}
@@ -31,20 +34,20 @@ export default function AnalysisCard({
           gap: "0.625rem",
           marginBottom: "1rem",
           paddingBottom: "0.75rem",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          borderBottom: "1px solid rgba(255,255,255,0.04)",
         }}
       >
         <div
           style={{
-            width: 32,
-            height: 32,
-            borderRadius: "8px",
-            background: `${accentColor}20`,
-            border: `1px solid ${accentColor}40`,
+            width: 28,
+            height: 28,
+            borderRadius: "2px",
+            background: "rgba(255, 255, 255, 0.03)",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "15px",
+            fontSize: "14px",
             flexShrink: 0,
           }}
         >
@@ -52,10 +55,12 @@ export default function AnalysisCard({
         </div>
         <h3
           style={{
-            fontSize: "0.875rem",
-            fontWeight: 700,
-            color: "#f1f5f9",
-            letterSpacing: "0.01em",
+            fontSize: "0.85rem",
+            fontWeight: 600,
+            color: "#ffffff",
+            fontFamily: "Space Grotesk, sans-serif",
+            textTransform: "uppercase",
+            letterSpacing: "0.05em",
           }}
         >
           {title}
@@ -63,13 +68,14 @@ export default function AnalysisCard({
         <span
           style={{
             marginLeft: "auto",
-            background: `${accentColor}20`,
-            color: accentColor,
-            border: `1px solid ${accentColor}30`,
-            borderRadius: "9999px",
-            padding: "2px 8px",
+            background: "rgba(255, 255, 255, 0.04)",
+            color: "#ffffff",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
+            borderRadius: "2px",
+            padding: "2px 6px",
             fontSize: "0.7rem",
             fontWeight: 600,
+            fontFamily: "JetBrains Mono, monospace",
           }}
         >
           {items.length}
@@ -86,20 +92,21 @@ export default function AnalysisCard({
               alignItems: "flex-start",
               gap: "0.625rem",
               fontSize: "0.85rem",
-              color: "#94a3b8",
+              color: "#a1a1aa",
               lineHeight: 1.6,
               paddingBottom: i < items.length - 1 ? "0.5rem" : 0,
-              borderBottom: i < items.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
+              borderBottom: i < items.length - 1 ? "1px solid rgba(255,255,255,0.02)" : "none",
+              fontFamily: "Space Grotesk, sans-serif",
             }}
           >
             <span
               style={{
                 flexShrink: 0,
-                width: 6,
-                height: 6,
+                width: 4,
+                height: 4,
                 borderRadius: "50%",
                 background: accentColor,
-                marginTop: "0.45rem",
+                marginTop: "0.5rem",
               }}
             />
             {item}
